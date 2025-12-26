@@ -165,19 +165,19 @@ class FreonMenuButton extends PanelMenu.Button {
 
         this.connect('destroy', this._onButtonDestroy.bind(this));
 
-        // don't postprone the first call by update-time.
+        // don't postpone the first call by update-time.
         this._querySensors();
 
         this._addTimer();
         this._updateUI(true);
         this._updateUITimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
             this._updateUI();
-            // readd to update queue
+            // read to update queue
             return true;
         });
         this._positionInPanelChangedTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
             this._positionInPanelChanged();
-            return false; // 只执行一次
+            return false; // execute only once
         });
     }
 
